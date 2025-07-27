@@ -1,0 +1,13 @@
+---
+- name: create shell script on remote computer
+  hosts: all
+  become: true 
+
+  tasks: 
+  - name: Create a shell file and store on the remote computer
+    copy:
+      src: /home/ansible/dir.sh
+      dest: /tmp/
+      owner: ansible
+      group: ansible
+      mode: 0755 

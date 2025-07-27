@@ -1,0 +1,15 @@
+---
+- name: HTTP installation with Service starting
+  hosts: localhost
+  become: true
+
+  tasks:
+    - name: Install apache2 service
+      apt:
+        name: apache2
+        state: present
+    - name: Start the Service
+      service:
+        name: apache2
+        state: started 
+

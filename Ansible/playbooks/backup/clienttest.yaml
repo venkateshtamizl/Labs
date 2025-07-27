@@ -1,0 +1,8 @@
+---
+- name: Client Test
+  hosts: all
+
+  tasks:
+    - name: test connectivity
+      ping:
+

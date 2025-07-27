@@ -1,0 +1,10 @@
+---
+- name: Change the file permission
+  hosts: all
+
+  tasks:
+    - name: File Permissions 
+      file:
+        path: /home/ansible/linux
+        mode: a+rwx
+      

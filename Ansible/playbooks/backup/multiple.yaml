@@ -1,0 +1,9 @@
+---
+- name: MultipleTaskPlybook
+  hosts: localhost
+
+  tasks:
+    - name: Ping Task
+      ping:
+    - name: Print the Hello-World
+      debug: msg="Hello-World"

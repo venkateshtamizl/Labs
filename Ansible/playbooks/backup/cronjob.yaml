@@ -1,0 +1,22 @@
+---
+- name: Scheduled Job
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Verify cron package
+      apt:
+        name: cron
+        state: present
+
+    - name: Run every thusday
+      cron:
+        name: Thusday Schedule
+        minute: "0"
+        hour: "10"
+        day: "*"
+        month: "*"
+        weekday: "4"
+        user: ansible
+        job: "/tmp/dir.sh"
+

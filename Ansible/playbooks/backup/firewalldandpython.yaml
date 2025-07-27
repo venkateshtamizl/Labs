@@ -1,0 +1,14 @@
+---
+- name: Install Package
+  hosts: all
+  become: true
+  tasks:
+   - name: Ensure firewalld and dependencies are installed
+     apt:
+       name: firewalld
+       state: present
+   - name: Install the python3-firewall
+     apt:
+       name: python3-firewall
+       state: present
+

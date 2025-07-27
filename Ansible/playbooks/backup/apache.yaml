@@ -1,0 +1,22 @@
+---
+- name: Package Installation
+  hosts: all
+  become: true
+  tasks:
+    - name: Apache installation
+      apt:
+        name: apache2
+        state: present
+    - name: Apache service start
+      service:
+        name: apache2
+        state: started
+    - name: Open port 80 for http access
+      firewalld:
+        service: http
+        permanent: true
+        state: enabled
+    - name: Restart the Firewall service
+      service:
+        name: firewalld
+        state: reloaded

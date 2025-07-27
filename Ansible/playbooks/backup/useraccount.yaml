@@ -1,0 +1,15 @@
+---
+- name: User account Creation
+  hosts: all
+  become: yes
+
+  tasks:
+    - name : Account Creation
+      user:
+        name: test
+        home: /home/test
+        state: present
+        shell: /bin/bash
+        password: "{{ 'Delta@123' | password_hash('sha512') }}"
+    - name: Expire the password
+      command: chage -d 0 test
