@@ -1,0 +1,18 @@
+---
+- name: Kill the process
+  hosts: all
+  become: true
+
+  tasks:
+   - name: Get running process from client
+     ignore_errors: yes
+     shell: "ps -few | grep apache2 | awk '{print $2}'"
+     register: running_process
+
+   - name: Kill the running process
+     ignore_errors: yes
+     shell: "kill {{ item }}"
+     with_items: "{{ running_process.stdout_lines }}"
+
+
+
