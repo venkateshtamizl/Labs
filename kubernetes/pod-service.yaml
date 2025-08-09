@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: task-pv-service
+spec:
+  selector:
+    app: task-pv-pod  # or use labels if defined
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30200
+  type: NodePort
