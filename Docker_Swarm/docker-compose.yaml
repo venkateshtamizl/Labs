@@ -13,6 +13,8 @@ services:
     image: voting-app
     ports:
       - 5000:80
+    deploy:
+      replicas: 2
 
   worker:
     image: worker-app
